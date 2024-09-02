@@ -94,9 +94,9 @@ cd MultiFunctionStore/
 -   php artisan make:controller TransferMoneyFirmOrderController --resource
 
 
--   git add .
 -   git commit -m "clean code"
--   git commit -m "done"
+-   git add .
+-   git commit -m "edit icon for all inputs section2"
 -   git push
 
 
@@ -119,3 +119,12 @@ cd MultiFunctionStore/
 -   php artisan serve
 -   check it on http://127.0.0.1:8000/
 # MultiFunctionEStore
+
+to add edit icon for inputs 
+
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+    </div>
+    // add input here
+</div>
