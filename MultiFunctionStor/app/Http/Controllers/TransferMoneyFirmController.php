@@ -59,13 +59,13 @@ class TransferMoneyFirmController extends Controller
                $file->move('assets/images/TransferMoneyFirm/', $name);
                $input['image'] = $name;
             }
-       }
-       else
-       {
+        }
+        else
+        {
             $input['image']= $transferMoneyFirm['image'];
-       }
-       $transferMoneyFirm->update($input);
-       return back()->with('message', 'تم التعديل بنجاح');
+        }
+        $transferMoneyFirm->update($input);
+        return back()->with('message', 'تم التعديل بنجاح');
     }
 
     public function destroy( $id)

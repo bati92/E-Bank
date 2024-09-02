@@ -57,11 +57,11 @@ class TransferController extends Controller
                $file->move('assets/images/transfer/', $name);
                $input['image'] = $name;
             }
-       }
-       else
-       {
+        }
+        else
+        {
             $input['image']= $transfer['image'];
-       }
+        }
         $transfer->update($input);
         return back()->with('message', 'تم التعديل بنجاح');
     }

@@ -33,7 +33,7 @@ class EbankSectionController extends Controller
         }
         else
         {
-         $input['image']= "";
+            $input['image']= "";
         }
         EbankSection::create($input);
         return back()->with('message', 'تمت الاضافة بنجاح');
@@ -58,11 +58,11 @@ class EbankSectionController extends Controller
                $file->move('assets/images/ebankSection/', $name);
                $input['image'] = $name;
             }
-       }
-       else
-       {
+        }
+        else
+        {
             $input['image']=$ebank['image'];
-       }
+        }
         $ebank->update( $input);
        
         return back()->with('message', 'تم التعديل بنجاح');

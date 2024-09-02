@@ -57,14 +57,14 @@ class GameSectionController extends Controller
                $file->move('assets/images/gameSection/', $name);
                $input['image'] = $name;
             }
-       }
-       else
-       {
+        }
+        else
+        {
             $input['image']= $game['image'];
-       }
-       $game->update( $input);
+        }
+        $game->update( $input);
    
-       return back()->with('message', 'تم التعديل بنجاح');
+        return back()->with('message', 'تم التعديل بنجاح');
     }
 
     public function destroy(string $id)

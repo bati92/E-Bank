@@ -58,13 +58,13 @@ class CardController extends Controller
             $name = 'card'.time().$file->getClientOriginalName();
             $file->move('assets/images/card/', $name);
             $input['image'] = $name;
-        }   $input['image'] = $name;
+        }   
             
-       }
-       else
-       {
+        }
+        else
+        {
             $input['image'] =$card['image'];
-       }
+        }
         $card->update( $input );
         return back()->with('message', 'تم التعديل بنجاح');
     }

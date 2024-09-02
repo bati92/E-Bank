@@ -17,7 +17,6 @@ class TurkificationController extends Controller
 
     public function create()
     {
-        dd($current_user);
         return view('backend.turkifications.create');
     }
 

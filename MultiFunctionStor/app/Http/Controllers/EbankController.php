@@ -61,11 +61,11 @@ class EbankController extends Controller
                 $file->move('assets/images/ebanks/', $name);
                 $input['image'] = $name;
             }
-       }
-       else
-       {
-        $input['image']= $ebank['image'];
-       }
+        }
+        else
+        {
+            $input['image']= $ebank['image'];
+        }
         $ebank->update($input);
        
         return back()->with('message', 'تم التعديل بنجاح');

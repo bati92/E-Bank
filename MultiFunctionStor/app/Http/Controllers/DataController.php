@@ -60,13 +60,12 @@ class DataController extends Controller
                 $file->move('assets/images/data/', $name);
                 $input['image'] = $name;
             } 
-       }
-       else
-       {
+        }
+        else
+        {
             $input['image'] =$data['image'];
-       }
-        $data->update(
-        $input);
+        }
+        $data->update($input);
        
         return back()->with('message', 'تم التعديل بنجاح');
     }

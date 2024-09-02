@@ -60,11 +60,11 @@ class EcardController extends Controller
            $file->move('assets/images/ecard/', $name);
            $input['image'] = $name;
         }
-       }
-       else
-       {
-           $input['image']= $ecard['image'];
-       }
+        }
+        else
+        {
+            $input['image']= $ecard['image'];
+        }
         $ecard->update( $input);
        
         return back()->with('message', 'تم التعديل بنجاح');

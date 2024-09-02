@@ -59,11 +59,11 @@ class GameController extends Controller
                $file->move('assets/images/game/', $name);
                $input['image'] = $name;
             }
-       }
-       else
-       {
+        }
+        else
+        {
             $input['image']= $game['image'];
-       }
+        }
         $game->update( $input);
        
         return back()->with('message', 'تم التعديل بنجاح');

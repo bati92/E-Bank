@@ -22,8 +22,8 @@ class EcardSectionController extends Controller
     {
         $input = $request->all();
       
-         if($request->file('image')!="")
-         {
+        if($request->file('image')!="")
+        {
             if ($file = $request->file('image')) {
                 $name = 'ecard'.time().$file->getClientOriginalName();
                 $file->move('assets/images/ecardSection/', $name);
@@ -57,11 +57,11 @@ class EcardSectionController extends Controller
                $file->move('assets/images/ecardSection/', $name);
                $input['image'] = $name;
             }
-       }
-       else
-       {
+        }
+        else
+        {
             $input['image']= $ecard['image'];
-       }
+        }
         $ecard->update( $input);
        
         return back()->with('message', 'تم التعديل بنجاح');
