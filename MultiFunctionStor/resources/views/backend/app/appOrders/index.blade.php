@@ -94,7 +94,7 @@
                     <!-- <input type="hidden" name="transfer_money_firm" value="1" /> -->
                     <div class="modal-footer">   
                         <button type="submit" class="btn btn-primary">حفظ</button>
-                        <a href="#" class="btn btn-secondary">الغاء الأمر</a>
+                        <a href="#" class="btn btn-secondary" data-dismiss="modal">الغاء الأمر</a>
                     </div>
                 </form>
             </div>
@@ -119,7 +119,7 @@
 
                <div class="modal-footer">
                    <button type="submit" class="btn btn-primary">نعم</button>
-                   <a href="#" class="btn btn-secondary">الغاء الأمر</a>
+                   <a href="#" class="btn btn-secondary" data-dismiss="modal">الغاء الأمر</a>
                </div>
                </form>
             </div> 
@@ -154,7 +154,7 @@
 
                     <div class="modal-footer"> 
                         <button type="submit" class="btn btn-primary">حفظ</button>
-                        <a href="#" class="btn btn-secondary">الغاء الأمر</a>
+                        <a href="#" class="btn btn-secondary" data-dismiss="modal">الغاء الأمر</a>
                     </div>
                 </form>
             </div>

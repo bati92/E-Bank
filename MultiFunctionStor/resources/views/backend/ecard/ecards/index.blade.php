@@ -118,7 +118,7 @@
                     <div class="input-group-prepend">
                             <span class="input-group-text">الوصف</span>
                         </div>
-                                <textarea class="form-control"  name="note"    ></textarea>
+                        <textarea class="form-control" name="note" ></textarea>
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -132,7 +132,7 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <div class="modal-footer">   
                         <button type="submit" class="btn btn-primary">حفظ</button>
-                        <a href="#" class="btn btn-secondary">الغاء الأمر</a>
+                        <a href="#" class="btn btn-secondary" data-dismiss="modal">الغاء الأمر</a>
                     </div>
                 </form>
             </div>
@@ -155,7 +155,7 @@
                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                <div class="modal-footer">
                    <button type="submit" class="btn btn-primary">نعم</button>
-                   <a href="#" class="btn btn-secondary">الغاء الأمر</a>
+                   <a href="#" class="btn btn-secondary" data-dismiss="modal">الغاء الأمر</a>
                </div>
              </form>
             </div>
@@ -214,7 +214,7 @@
                                
                     <div class="modal-footer"> 
                         <button type="submit" class="btn btn-primary">حفظ</button>
-                        <a href="#" class="btn btn-secondary">الغاء الأمر</a>
+                        <a href="#" class="btn btn-secondary" data-dismiss="modal">الغاء الأمر</a>
                     </div>
                 </form>
             </div>

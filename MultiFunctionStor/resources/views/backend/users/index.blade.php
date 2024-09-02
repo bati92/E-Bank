@@ -898,7 +898,8 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
-                           </div>
+                           
+                                </div>
                         
                             <div class="input-group mb-3">
                                <div class="input-group-prepend">
@@ -930,7 +931,7 @@
                                   <div class="input-group-prepend">
                                       <input type="text" class="form-control" required style="direction:ltr" placeholder=" 538 9899 096" aria-label=" رقم الهاتف"name="mobile" describedby="basic-addon1">
                                   </div>                    
-                                  <select  class="custom-select" required  name="code" >
+                            <select  class="custom-select" required  name="code" >
                             
                                <option value="">اختر البلد   </option>
                                <option value="+93">
@@ -1611,7 +1612,7 @@
                                                                                                                                                                                    
                           
                                   
-                                  </select>
+                            </select>
                                        @error('mobile')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -1620,7 +1621,8 @@
                             
                              </div>
                                
-                           </div>
+                           
+                            </div>
                             
                           <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                            
