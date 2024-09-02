@@ -98,28 +98,41 @@
             </div>
             <div class="modal-body"> 
                 <form method="Post" action="{{ route('data.store') }}" enctype="multipart/form-data">
-                <div class="input-group mb-3">
-                       <select class="custom-select" required name="type" >
-                       <option value="" selected>اختر النوع</option>
-                           
-                            <option value="1" >فاتورة</option>
-                            
-                            <option value="2" >رصيد</option>
-                         </select>     
-                    </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" required placeholder="الاسم"  name="name" aria-label="name" aria-describedby="basic-addon2">
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" required placeholder="السعر"  name="price" aria-label="price" aria-describedby="basic-addon2">
-                    </div>
-                    
-                    <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                            <span class="input-group-text">الوصف</span>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                                <textarea class="form-control"  name="note"   ></textarea>
+                        <select class="custom-select" required name="type" >
+                            <option value="" selected>اختر النوع</option>
+                            <option value="1" >فاتورة</option>
+                            <option value="2" >رصيد</option>
+                        </select> 
                     </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <input type="text" class="form-control" required placeholder="الاسم"  name="name" aria-label="name" aria-describedby="basic-addon2">
+
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <input type="text" class="form-control" required placeholder="السعر"  name="price" aria-label="price" aria-describedby="basic-addon2">
+
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <textarea class="form-control"  name="note" placeholder="الوصف" ></textarea>
+
+                    </div>
+
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">الصورة</span>
@@ -177,35 +190,46 @@
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
 
-                    <select class="custom-select" required name="type" >
-             
-                          
-                            @if( $data->type==1)
-                           <option value="1" selected >فاتورة</option>
-                           @else
-                           <option value="1"  >فاتورة</option>
-                           @endif
-                           @if( $data->type==2)
-                           <option value="2" selected >رصيد</option>
-                           @else
-                           <option value="2"  >رصيد</option>
-                           @endif
 
-                      
-                      </select> 
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <select class="custom-select" required name="type" >
+                             @if( $data->type==1)
+                            <option value="1" selected >فاتورة</option>
+                            @else
+                            <option value="1"  >فاتورة</option>
+                            @endif
+                            @if( $data->type==2)
+                            <option value="2" selected >رصيد</option>
+                            @else
+                            <option value="2"  >رصيد</option>
+                            @endif
+                         </select> 
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" value="{{$data->name}}" required placeholder="الاسم" name="name" aria-label="name" aria-describedby="basic-addon2">
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="السعر"  value="{{$data->price}}"   name="price" aria-label="price" aria-describedby="basic-addon2">
                     </div>
-                    
+
                     <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                            <span class="input-group-text">الوصف</span>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                                <textarea class="form-control"  name="note"   > value="{{$data->name}}" </textarea>
+                        <textarea class="form-control"  name="note" placeholder="الوصف"  > value="{{$data->name}}" </textarea>
                     </div>
+
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">الصورة</span>

@@ -98,28 +98,42 @@
             </div>
             <div class="modal-body"> 
                 <form method="Post" action="{{ route('ebank.store') }}" enctype="multipart/form-data">
-                <div class="input-group mb-3">
-                       <select class="custom-select" required name="bank_id" >
-                       <option value="" selected>اختر القسم</option>
-                           @foreach ($ebanks_sections as $key => $section)
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <select class="custom-select" required name="bank_id" >
+                            <option value="" selected>اختر القسم</option>
+                            @foreach ($ebanks_sections as $key => $section)
                             <option value="{{$section->id}}" >{{$section->name}}</option>
 
-                           @endforeach
-                         </select>     
+                            @endforeach
+                        </select>  
                     </div>
+
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" required placeholder="الاسم"  name="name" aria-label="name" aria-describedby="basic-addon2">
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" required placeholder="السعر"  name="price" aria-label="price" aria-describedby="basic-addon2">
-                    </div>
-                    
-                    <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                            <span class="input-group-text">الوصف</span>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                                <textarea class="form-control"  name="note"    ></textarea>
+                        <input type="text" class="form-control" required placeholder="الاسم"  name="name" aria-label="name" aria-describedby="basic-addon2">
+
                     </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <input type="text" class="form-control" required placeholder="السعر"  name="price" aria-label="price" aria-describedby="basic-addon2">
+
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <textarea class="form-control"  name="note" placeholder="الوصف"  ></textarea>
+
+                    </div>
+               
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">الصورة</span>
@@ -176,8 +190,11 @@
                 <form method="POST" action="{{ route('ebank.update', $ebank->id) }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
-
-                    <select class="custom-select" required name="bank_id" >
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <select class="custom-select" required name="bank_id" >
              
                            @foreach ($ebanks_sections as $key => $section)
                                @if( $ebank->bank_id==$section->id)
@@ -187,20 +204,28 @@
                                 @endif
 
                            @endforeach
-                    </select> 
+                        </select> 
+                    </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" value="{{$ebank->name}}" required placeholder="الاسم" name="name" aria-label="name" aria-describedby="basic-addon2">
                     </div>
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="السعر" value ="{{$ebank->price}}" name="price" aria-label="price" aria-describedby="basic-addon2">
                     </div>
-                    
                     <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                            <span class="input-group-text">الوصف</span>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
                         <textarea class="form-control" name="note"  placeholder="الوصف"  >{{$ebank->note}}</textarea>
                     </div>
+                    
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">الصورة</span>

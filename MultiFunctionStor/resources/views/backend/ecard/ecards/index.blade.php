@@ -98,28 +98,40 @@
             </div>
             <div class="modal-body"> 
                 <form method="Post" action="{{ route('ecard.store') }}" enctype="multipart/form-data">
-                <div class="input-group mb-3">
-                       <select class="custom-select" required name="ecard_id" >
-                       <option value="" selected>اختر القسم</option>
-                           @foreach ($ecards_sections as $key => $section)
-                            <option value="{{$section->id}}" >{{$section->name}}</option>
-
-                           @endforeach
-                         </select>     
-                    </div>
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <select class="custom-select" required name="ecard_id" >
+                            <option value="" selected>اختر القسم</option>
+                            @foreach ($ecards_sections as $key => $section)
+                            <option value="{{$section->id}}" >{{$section->name}}</option>
+    
+                            @endforeach
+                        </select>     
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="الاسم"  name="name" aria-label="name" aria-describedby="basic-addon2">
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="السعر"  name="price" aria-label="price" aria-describedby="basic-addon2">
                     </div>
-                    
+
                     <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                            <span class="input-group-text">الوصف</span>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <textarea class="form-control" name="note" ></textarea>
+                        <textarea class="form-control" name="note" placeholder="الوصف"></textarea>
                     </div>
+
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">الصورة</span>
@@ -177,30 +189,45 @@
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
 
-                    <select class="custom-select" required name="ecard_id" >
-             
-                           @foreach ($ecards_sections as $key => $section)
-                               @if( $ecard->ecard_id==$section->id)
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <select class="custom-select" required name="ecard_id" >
+                            @foreach ($ecards_sections as $key => $section)
+                                @if( $ecard->ecard_id==$section->id)
                             <option value="{{$section->id}}" selected>{{$section->name}}</option>
                                 @else
                             <option value="{{$section->id}}" >{{$section->name}}</option>
                                 @endif
+                
+                            @endforeach
+                        </select> 
+                    </div>
 
-                           @endforeach
-                    </select> 
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" value="{{$ecard->name}}" required placeholder="الاسم" name="name" aria-label="name" aria-describedby="basic-addon2">
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="السعر"  value="{{$ecard->price}} name="price" aria-label="price" aria-describedby="basic-addon2">
                     </div>
-                    
+
                     <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                            <span class="input-group-text">الوصف</span>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                                <textarea class="form-control"  name="note"    >{{$ecard->price}}</textarea>
+                        <textarea class="form-control"  name="note"  placeholder="الوصف" >{{$ecard->price}}</textarea>
+
                     </div>
+
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">الصورة</span>

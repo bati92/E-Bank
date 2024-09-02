@@ -96,12 +96,12 @@
                         </div>
                         <input type="text" class="form-control" required placeholder="السعر"  name="price" aria-label="price" aria-describedby="basic-addon2">
                     </div>
-                    
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">الوصف</span>
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                            <textarea class="form-control"  name="note"   ></textarea>
+                        <textarea class="form-control"  name="note" placeholder="الوصف"></textarea>
+
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -179,9 +179,10 @@
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">الوصف</span>
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                                <textarea class="form-control"  name="note"   > value="{{$card->note}}" </textarea>
+                        <textarea class="form-control"  name="note" placeholder="الوصف"  > value="{{$card->note}}" </textarea>
+
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
