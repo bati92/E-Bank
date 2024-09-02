@@ -85,7 +85,7 @@
                     <div class="input-group mb-3">
                        
                         <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>  
                       
                         <input type="text" class="form-control" required placeholder=" الاسم"  name="role_name" aria-label="commession_percent" aria-describedby="basic-addon2">

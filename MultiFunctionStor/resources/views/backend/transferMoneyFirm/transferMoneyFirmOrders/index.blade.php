@@ -86,27 +86,63 @@
             </div>
             <div class="modal-body"> 
                 <form method="Post" action="{{ route('transfer-money-firm-order.store') }}" enctype="multipart/form-data">
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="اسم شركة الشحن" name="transfer_money_firm_id" aria-label="transfer_money_firm_id" aria-describedby="basic-addon2">
+
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
+
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="اسم المرسل" name="sender" aria-label="sender" aria-describedby="basic-addon2">
+
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="القيمة" name="value" aria-label="value" aria-describedby="basic-addon2">
+
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="العملة" name="currency" aria-label="currency" aria-describedby="basic-addon2">
+
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="رقم الوثيقة" name="dekont_no" aria-label="dekont_no" aria-describedby="basic-addon2">
+
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="كلمة المرور" name="password" aria-label="password" aria-describedby="basic-addon2">
+
                     </div>
+
                     <input type="hidden" name="transfer_money_firm_id" value="1" />
                     <input type="hidden" name="user_id" value="1" />
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -158,27 +194,56 @@
                 <form method="POST" action="{{ route('transfer-money-firm-order.update',  $transferMoneyFirmOrder->id) }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" value="{{$transferMoneyFirmOrder->transfer_money_firm_id}}" required placeholder="اسم شركة الشحن" name="transfer_money_firm_id" aria-label="transfer_money_firm_id" aria-describedby="basic-addon2">
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" value="{{$transferMoneyFirmOrder->user_id}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" value="{{$transferMoneyFirmOrder->sender}}" required placeholder="اسم المرسل" name="sender" aria-label="sender" aria-describedby="basic-addon2">
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" value="{{$transferMoneyFirmOrder->value}}" required placeholder="القيمة" name="value" aria-label="value" aria-describedby="basic-addon2">
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" value="{{$transferMoneyFirmOrder->currency}}" required placeholder="العملة" name="currency" aria-label="currency" aria-describedby="basic-addon2">
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" value="{{$transferMoneyFirmOrder->dekont_no}}" required placeholder="رقم الوثيقة" name="dekont_no" aria-label="dekont_no" aria-describedby="basic-addon2">
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" value="{{$transferMoneyFirmOrder->password}}" required placeholder="كلمة المرور" name="password" aria-label="password" aria-describedby="basic-addon2">
                     </div>
+                    
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <!-- <input type="hidden" name="transfer_money_firm" value="1" /> -->
 

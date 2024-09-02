@@ -98,17 +98,39 @@
             </div>
             <div class="modal-body"> 
                 <form method="Post" action="{{ route('game.store') }}" enctype="multipart/form-data">
-                <div class="input-group mb-3">
-                       <select class="custom-select" required name="game_id" >
-                       <option value="" selected>اختر القسم</option>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <select class="custom-select" required name="game_id" >
+                           <option value="" selected>اختر القسم</option>
                            @foreach ($games_sections as $key => $section)
-                            <option value="{{$section->id}}" >{{$section->name}}</option>
+                           <option value="{{$section->id}}" >{{$section->name}}</option>
 
                            @endforeach
-                         </select>     
+                        </select>
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="الاسم"  name="name" aria-label="name" aria-describedby="basic-addon2">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <input type="text" class="form-control" required placeholder="السعر"  name="price" aria-label="price" aria-describedby="basic-addon2">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <textarea class="form-control"  name="note" placeholder="الوصف"></textarea>
                     </div>
                
                     <div class="input-group mb-3">
@@ -116,15 +138,9 @@
                             <span class="input-group-text">الصورة</span>
                         </div>
                         <div class="input-group mb-3">
-                        <input type="text" class="form-control" required placeholder="السعر"  name="price" aria-label="price" aria-describedby="basic-addon2">
                     </div>
                     
                     <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                            <span class="input-group-text">الوصف</span>
-                        </div>
-                                <textarea class="form-control"  name="note" ></textarea>
-                    </div>
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" name="image">
                             <label class="custom-file-label" for="inputGroupFile01">اختر الصورة</label>
@@ -178,30 +194,44 @@
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
 
-                    <select class="custom-select" required name="game_id" >
-             
-                           @foreach ($games_sections as $key => $section)
-                               @if( $game->game_id==$section->id)
-                            <option value="{{$section->id}}" selected>{{$section->name}}</option>
-                                @else
-                            <option value="{{$section->id}}" >{{$section->name}}</option>
-                                @endif
-
-                           @endforeach
-                    </select> 
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <select class="custom-select" required name="game_id" >
+                 
+                               @foreach ($games_sections as $key => $section)
+                                   @if( $game->game_id==$section->id)
+                                <option value="{{$section->id}}" selected>{{$section->name}}</option>
+                                    @else
+                                <option value="{{$section->id}}" >{{$section->name}}</option>
+                                    @endif
+    
+                               @endforeach
+                        </select> 
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" value="{{$game->name}}" required placeholder="الاسم" name="name" aria-label="name" aria-describedby="basic-addon2">
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="السعر" value="{{$game->price}}"  name="price" aria-label="price" aria-describedby="basic-addon2">
                     </div>
-                    
+
                     <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                            <span class="input-group-text">الوصف</span>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                                <textarea class="form-control"  name="note"    >{{$game->price}}</textarea>
+                        <textarea class="form-control"  name="note"  placeholder="الوصف"  >{{$game->price}}</textarea>
                     </div>
+
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">الصورة</span>

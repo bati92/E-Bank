@@ -10,7 +10,7 @@
         <div class="block-header">
             <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
-                    <h2>  خدمة  التتريك </h2>
+                    <h2> خدمة  التتريك </h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-dashboard"></i></a></li>                            
                         <li class="breadcrumb-item">لوحة التحكم</li>
@@ -82,8 +82,12 @@
             <div class="modal-body"> 
                 <form method="Post"  action="{{ route('turkification.store') }}" enctype="multipart/form-data">
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="IME"  name="ime" aria-label="ime" aria-describedby="basic-addon2">
                     </div>
+
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <input type="hidden" name="user_id" value="1" />
                     <div class="modal-footer">   
@@ -133,10 +137,12 @@
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" value="{{$turkification->ime}}" required placeholder="ime" name="ime" aria-label="ime" aria-describedby="basic-addon2">
                     </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                               
                     <div class="modal-footer"> 
                         <button type="submit" class="btn btn-primary">حفظ</button>
                         <a href="#" class="btn btn-secondary" data-dismiss="modal">الغاء الأمر</a>

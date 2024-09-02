@@ -112,7 +112,7 @@
             </div>
             <div class="modal-body"> 
                 <form method="Post"  action="{{ route('user.store') }}" enctype="multipart/form-data">
-                   <div class="input-group mb-3">
+                    <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                                 </div>
@@ -146,12 +146,8 @@
                                 <select class="custom-select" required name="role_id" id="role">
                                   <option selected value="">  العمولة </option>
                                   @foreach ($vips as $key => $vip)
-                          
                                     <option value="{{$key}}" selected>{{$vip->role_name}}</option>
-                              
-
                                   @endforeach
-                             
                                 </select>   
                                     @error('role')
                                     <span class="invalid-feedback" role="alert">
@@ -194,24 +190,19 @@
                           
                             </div>
                             <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">تحميل صورة</span>
+                                </div>
+                                <div class="custom-file">
+                                  <input type="file" class="custom-file-input" name="image">
+                                  <label class="custom-file-label" for="inputGroupFile01">  </label>
+                                </div>
                             </div>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">تحميل صورة</span>
-                            </div>
-                            <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="image">
-                              <label class="custom-file-label" for="inputGroupFile01">  </label>
-                           </div>
-                        </div>
                            
                             <div class="input-group mb-3">
                                   الجنس:
-                                   
                                     <label class="fancy-radio custom-color-green"><input name="gender" value="0" type="radio" ><span><i></i>Male</span></label>
                                     <label class="fancy-radio custom-color-green"><input name="gender" value="1" type="radio" ><span><i></i>Female</span></label>
-                                    
                                        @error('gender')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
