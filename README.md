@@ -84,7 +84,7 @@ cd MultiFunctionStore/
 -   php artisan make:migration create_app_orders_table --create=app_orders
 -   php artisan make:migration create_vips_table --create=vips
 -   php artisan make:migration create_turkifications_table --create=turkifications
--   
+
 -   php artisan make:controller UserController --resource
 -   php artisan make:controller AppController --resource
 -   php artisan make:controller AppOrderController --resource
@@ -92,16 +92,14 @@ cd MultiFunctionStore/
 -   php artisan make:controller TurkificationController --resource
 -   php artisan make:controller TransferMoneyFirmController --resource
 -   php artisan make:controller TransferMoneyFirmOrderController --resource
--   
--   
--   
+
+
 -   git add .
 -   git commit -m "clean code"
 -   git commit -m "done"
 -   git push
--   
--   
--   
+
+
 -   composer dump-autoload
 -   php artisan config:cache
 -   php artisan route:cache
