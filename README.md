@@ -72,52 +72,52 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 composer create-project laravel/laravel MultiFunctionStore
 cd MultiFunctionStore/
 
-php artisan make:model App
-php artisan make:model AppOrder
-php artisan make:model Vip
-php artisan make:model Turkification
-php artisan make:model TransferMoneyFirm
-php artisan make:model TransferMoneyFirmOrder
-php artisan make:migration create_transfer_money_firm_orders_table --create=transfer_money_firm_orders
-php artisan make:migration create_transfer_money_firms_table --create=transfer_money_firms
-php artisan make:migration create_apps_table --create=apps
-php artisan make:migration create_app_orders_table --create=app_orders
-php artisan make:migration create_vips_table --create=vips
-php artisan make:migration create_turkifications_table --create=turkifications
-
-php artisan make:controller UserController --resource
-php artisan make:controller AppController --resource
-php artisan make:controller AppOrderController --resource
-php artisan make:controller VipController --resource
-php artisan make:controller TurkificationController --resource
-php artisan make:controller TransferMoneyFirmController --resource
-php artisan make:controller TransferMoneyFirmOrderController --resource
-
-
-
-git add .
-git commit -m "clean code"
-git commit -m "done"
-git push
-
-
-
-composer dump-autoload
-php artisan config:cache
-php artisan route:cache
-php artisan serve
-php artisan migrate:fresh
-Php artisan route:list
-Php artisan route:cache
+-   php artisan make:model App
+-   php artisan make:model AppOrder
+-   php artisan make:model Vip
+-   php artisan make:model Turkification
+-   php artisan make:model TransferMoneyFirm
+-   php artisan make:model TransferMoneyFirmOrder
+-   php artisan make:migration create_transfer_money_firm_orders_table --create=transfer_money_firm_orders
+-   php artisan make:migration create_transfer_money_firms_table --create=transfer_money_firms
+-   php artisan make:migration create_apps_table --create=apps
+-   php artisan make:migration create_app_orders_table --create=app_orders
+-   php artisan make:migration create_vips_table --create=vips
+-   php artisan make:migration create_turkifications_table --create=turkifications
+-   
+-   php artisan make:controller UserController --resource
+-   php artisan make:controller AppController --resource
+-   php artisan make:controller AppOrderController --resource
+-   php artisan make:controller VipController --resource
+-   php artisan make:controller TurkificationController --resource
+-   php artisan make:controller TransferMoneyFirmController --resource
+-   php artisan make:controller TransferMoneyFirmOrderController --resource
+-   
+-   
+-   
+-   git add .
+-   git commit -m "clean code"
+-   git commit -m "done"
+-   git push
+-   
+-   
+-   
+-   composer dump-autoload
+-   php artisan config:cache
+-   php artisan route:cache
+-   php artisan serve
+-   php artisan migrate:fresh
+-   Php artisan route:list
+-   Php artisan route:cache
 
 
 
 # how to run locally
-create a db called laravel
-composer update
-ask the owner for env file
-php artisan migrate:fresh
-php artisan route:cache
-php artisan serve
-check it on http://127.0.0.1:8000/
+-   create a db called laravel
+-   composer update
+-   ask the owner for env file
+-   php artisan migrate:fresh
+-   php artisan route:cache
+-   php artisan serve
+-   check it on http://127.0.0.1:8000/
 # MultiFunctionEStore
