@@ -81,15 +81,26 @@
             <div class="modal-body"> 
                 <form method="Post" action="{{ route('app.store') }}" enctype="multipart/form-data">
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="الاسم"  name="name" aria-label="name" aria-describedby="basic-addon2">
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="رقم اللاعب"  name="player_no" aria-label="player_no" aria-describedby="basic-addon2">
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="السعر"  name="price" aria-label="price" aria-describedby="basic-addon2">
                     </div>
-                    
+
                     <div class="input-group mb-3">
                     <div class="input-group-prepend">
                             <span class="input-group-text">الوصف</span>
@@ -152,21 +163,33 @@
                 <form method="POST" action="{{ route('app.update', ['app' => $app->id]) }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" value="{{$app->name}}" required placeholder="الاسم" name="name" aria-label="name" aria-describedby="basic-addon2">
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" value="{{$app->player_no}}" required placeholder="رقم اللاعب" name="player_no" aria-label="player_no" aria-describedby="basic-addon2">
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" value="{{$app->price}}" required placeholder="السعر" name="price" aria-label="price" aria-describedby="basic-addon2">
                     </div>
 
                     <div class="input-group mb-3">
-                    <div class="input-group-prepend">
+                        <div class="input-group-prepend">
                             <span class="input-group-text">الوصف</span>
                         </div>
-                                <textarea class="form-control"  name="note"  placeholder="الوصف"  >{{$app->note}} </textarea>
+                            <textarea class="form-control"  name="note"  placeholder="الوصف"  >{{$app->note}} </textarea>
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">

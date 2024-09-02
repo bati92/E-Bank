@@ -80,10 +80,12 @@
             </div>
             <div class="modal-body"> 
                 <form method="Post" action="{{ route('app-section.store') }}" enctype="multipart/form-data">
-                    <div class="input-group mb-3">
+                <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="الاسم"  name="name" aria-label="name" aria-describedby="basic-addon2">
                     </div>
-               
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">الصورة</span>
@@ -141,8 +143,12 @@
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" value="{{$app->name}}" required placeholder="الاسم" name="name" aria-label="name" aria-describedby="basic-addon2">
                     </div>
+
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">الصورة</span>

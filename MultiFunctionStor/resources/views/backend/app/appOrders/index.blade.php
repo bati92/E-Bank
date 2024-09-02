@@ -80,12 +80,21 @@
             <div class="modal-body"> 
                 <form method="Post" action="{{ route('app-order.store') }}" enctype="multipart/form-data">
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="اسم التطبيق" name="app_id" aria-label="app_id" aria-describedby="basic-addon2">
                     </div>
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
                     </div>
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" required placeholder="عدد" name="count" aria-label="count" aria-describedby="basic-addon2">
                     </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -141,12 +150,23 @@
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" value="{{$appOrder->app_id}}" required placeholder="اسم التطبيق" name="app_id" aria-label="app_id" aria-describedby="basic-addon2">
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" value="{{$appOrder->user_id}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
                     </div>
+
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
                         <input type="text" class="form-control" value="{{$appOrder->count}}" required placeholder="عدد" name="count" aria-label="count" aria-describedby="basic-addon2">
                     </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />

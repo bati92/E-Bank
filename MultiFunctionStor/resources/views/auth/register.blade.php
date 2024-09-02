@@ -61,7 +61,6 @@ body.font-nunito {
                                 </div>
                                 <select class="custom-select" required name="role" id="role">
                                     <option selected value="4">  مسؤول </option>
-                               
                                 </select>
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -101,12 +100,10 @@ body.font-nunito {
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                          
                             </div>
                            
                             <div class="input-group mb-3">
                                   الجنس:
-                                   
                                     <label class="fancy-radio custom-color-green"><input name="gender" value="0" type="radio" ><span><i></i>Male</span></label>
                                     <label class="fancy-radio custom-color-green"><input name="gender" value="1" type="radio" ><span><i></i>Female</span></label>
                                     
@@ -816,7 +813,7 @@ body.font-nunito {
                                     <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                                 </div>
                           
-                              <input  type="password" class="form-control" name="password_confirmation" placeholder="  تأكيد كلمة السر" required autocomplete="new-password">
+                              <input  type="password" class="form-control" name="password_confirmation" placeholder=" تأكيد كلمة السر" required autocomplete="new-password">
                                 @error('password_confirmation')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
