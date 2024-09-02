@@ -892,7 +892,7 @@
                                                                                    <option value="ZIMBABWE">
                                             ZIMBABWE</option>
                                                                                                                                             
-                                    </select>
+                                </select>
                                     @error('nationality')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
