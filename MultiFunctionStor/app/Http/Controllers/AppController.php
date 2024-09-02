@@ -9,26 +9,17 @@ use Illuminate\Support\Facades\DB;
 
 class AppController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
        $apps=DB::table('apps')->select('*')->orderBy('id', 'desc')->paginate(500);
-       return view('backend.apps.index', compact('apps'));
+       return view('backend.app.apps.index', compact('apps'));
     }
 
-    /** 
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return view('backend.apps.create');
+        return view('backend.app.apps.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $input = $request->all();
@@ -38,34 +29,26 @@ class AppController extends Controller
                 $name = 'app'.time().$file->getClientOriginalName();
                 $file->move('images/apps/', $name);
                 $input['image'] = $name;
-             }
+            }
        }
        else
        {
-        $input['image'] ="";
+            $input['image'] ="";
        }
       
         App::create($input);
         return back()->with('message', 'تمت الاضافة بنجاح');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(string $id)
     {
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit(string $id)
     {
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $app = App::findOrFail($id);

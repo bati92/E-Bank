@@ -13,13 +13,11 @@ class AppOrderController extends Controller
     public function index()
     {
         $appOrders=DB::table('app_orders')->select('*')->orderBy('id', 'desc')->paginate(500);
-        return view('backend.appOrders.index', compact('appOrders'));
+        return view('backend.app.appOrders.index', compact('appOrders'));
     }
 
     public function create()
     {
-        return view('backend.appOrders.create');
-
     }
 
     public function store(Request $request)
@@ -42,11 +40,7 @@ class AppOrderController extends Controller
         $appOrder = AppOrder::findOrFail($id);
         $input = $request->all();
        
-        $appOrder->update([
-           'app_id' => $input['app_id'],
-           'user_id' => $input['user_id'],
-           'count' => $input['count'],
-        ]);
+        $appOrder->update($input);
         
         return back()->with('message', 'تم التعديل بنجاح');
     }

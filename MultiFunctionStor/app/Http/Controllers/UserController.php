@@ -11,15 +11,12 @@ class UserController extends Controller
     public function index()
     { 
         $users=DB::table('users')->select('*')->orderBy('id', 'desc')->paginate(500);
-        
         $vips=DB::table('vips')->select('*')->orderBy('id', 'desc')->get();
-      
         return view('backend.users.index', compact('users','vips'));
     }
 
     public function create()
     {
-        return view('backend.users.create');
     }
 
     public function store(Request $request)
@@ -28,16 +25,17 @@ class UserController extends Controller
         $input = $request->all();
         if($request->file('image')!="")
         {
-        if ($file = $request->file('image')) {
-           $name = 'user'.time().$file->getClientOriginalName();
-           $file->move('images/users/', $name);
-           $input['image'] = $name;
+            if ($file = $request->file('image')) {
+               $name = 'user'.time().$file->getClientOriginalName();
+               $file->move('images/users/', $name);
+               $input['image'] = $name;
+            }
         }
-       }
-       else{
-        $input['image']="";
-       }
-       $input['mobile']= $input['code']. $input['mobile'];
+        else
+        {
+            $input['image']="";
+        }
+        $input['mobile']= $input['code']. $input['mobile'];
         User::create($input);
         return back()->with('message', 'تمت الاضافة بنجاح');        
     }
@@ -51,8 +49,6 @@ class UserController extends Controller
         $users=DB::table('users')->select('*')->where('role',$id)->orderBy('id', 'desc')->paginate(500);
    
         return view('backend.users.index',compact('users'));
-  
-      
     }
 
     public function edit( $id)
@@ -71,15 +67,13 @@ class UserController extends Controller
             $file->move('images/users/', $name);
             $input['image'] = $name;
         }
-       }
-       else
-       {
-        $input['image'] =$user['image'];
-       }
-       $input['password'] = bcrypt($input['password']);
-        $user->update(
-          $input
-        );
+        }
+        else
+        {
+            $input['image'] =$user['image'];
+        }
+        $input['password'] = bcrypt($input['password']);
+        $user->update($input);
         
         return back()->with('message', 'تم التعديل بنجاح');
     }
