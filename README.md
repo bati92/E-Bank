@@ -115,6 +115,7 @@ Php artisan route:cache
 # how to run locally
 create a db called laravel
 composer update
+ask the owner for env file
 php artisan migrate:fresh
 php artisan route:cache
 php artisan serve
