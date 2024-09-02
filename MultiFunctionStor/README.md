@@ -102,7 +102,6 @@ git push
 
 
 
-composer update
 composer dump-autoload
 php artisan config:cache
 php artisan route:cache
@@ -114,7 +113,10 @@ Php artisan route:cache
 
 
 # how to run locally
-- create a db called laravel
-- php artisan migrate:fresh
-- php artisan serve
-- check it on http://127.0.0.1:8000/
+create a db called laravel
+composer update
+php artisan migrate:fresh
+php artisan route:cache
+php artisan serve
+check it on http://127.0.0.1:8000/
+# MultiFunctionEStore

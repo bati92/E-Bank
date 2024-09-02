@@ -6,16 +6,7 @@
 <!-- main page content body part -->
 <div id="main-content">
     <div class="container-fluid">
-        @if(session()->has('message'))
-        <div class="alert alert-success" 
-            style="position: absolute;
-            z-index: 99999;
-            top: 10%;
-            left: 30%;
-            width: 50%;">
-        {{ session()->get('message') }}
-        </div>
-        @endif
+        @include('includes.alert-message')
         <div class="block-header">
             <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-12">
