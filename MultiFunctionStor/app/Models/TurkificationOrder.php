@@ -7,10 +7,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-
-class Turkification extends Model
+class TurkificationOrder extends Model
 {
-
     use HasFactory, Notifiable;
     
     /**
@@ -21,6 +19,8 @@ class Turkification extends Model
     protected $fillable = [
         'user_id',
         'ime',
+        'price',
+        'note'
     ];
     
     /**
@@ -30,6 +30,4 @@ class Turkification extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-   
 }

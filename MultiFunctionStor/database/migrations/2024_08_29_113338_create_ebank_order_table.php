@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ebank_order', function (Blueprint $table) {
+        Schema::create('ebank_orders', function (Blueprint $table) {
             $table->id();
             
             $table->integer('bank_id');
@@ -19,10 +19,9 @@ return new class extends Migration
             $table->foreign('bank_id')->references('id')->on('ebanks')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('name');
-            $table->integer('count');
             $table->string('price');
             $table->string('mobile_no');
-            $table->string('note');
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ebank_order');
+        Schema::dropIfExists('ebank_orders');
     }
 };

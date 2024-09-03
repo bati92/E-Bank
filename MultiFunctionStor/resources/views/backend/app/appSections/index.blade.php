@@ -40,7 +40,6 @@
                                         <tr>                                            
                                             <th>اسم التطبيق</th>
                                             <th> الصورة </th>
-                                            
                                             <th>العمليات</th>
                                         </tr>
                                     </thead>
@@ -56,7 +55,7 @@
                                                 <a href="#defaultModal" data-toggle="modal" data-target="#defaultModal">
                                                 <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary"><i class="icon-eye"></i></a>
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$app->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
-                                                <a  href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$app->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
+                                                <a href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$app->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach

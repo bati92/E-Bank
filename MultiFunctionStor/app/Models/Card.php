@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 
 class Card extends Model
 {
@@ -15,9 +17,7 @@ class Card extends Model
         'note',
     ];
     
-    /**
-     * Get the user that owns the turkification.
-     */
+    
     public function user(): BelongsToMany
     {
         return $this->BelongsToMany(User::class);

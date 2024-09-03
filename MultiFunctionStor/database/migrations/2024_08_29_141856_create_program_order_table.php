@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('program_order', function (Blueprint $table) {
+        Schema::create('program_orders', function (Blueprint $table) {
             $table->id();
             $table->integer('program_id');
             $table->integer('user_id');
             $table->foreign('program_id')->references('id')->on('programs')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('price');
+            $table->integer('count');
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('program_order');
+        Schema::dropIfExists('program_orders');
     }
 };

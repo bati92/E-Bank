@@ -9,15 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class AppOrderController extends Controller
 {
-
     public function index()
     {
         $appOrders=DB::table('app_orders')->select('*')->orderBy('id', 'desc')->paginate(500);
         return view('backend.app.appOrders.index', compact('appOrders'));
-    }
-
-    public function create()
-    {
     }
 
     public function store(Request $request)
@@ -25,14 +20,6 @@ class AppOrderController extends Controller
         $input = $request->all();
         AppOrder::create($input);
         return back()->with('message', 'تمت الاضافة بنجاح');
-    }
-
-    public function show( $id)
-    {
-    }
-
-    public function edit( $id)
-    {
     }
 
     public function update(Request $request,  $id)

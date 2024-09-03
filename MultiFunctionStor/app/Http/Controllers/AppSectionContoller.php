@@ -13,10 +13,6 @@ class AppSectionContoller extends Controller
        return view('backend.app.appSections.index', compact('apps'));
     }
 
-    public function create()
-    {
-    }
-
     public function store(Request $request)
     {
         $input = $request->all();
@@ -37,14 +33,6 @@ class AppSectionContoller extends Controller
         AppSection::create($input);
         return back()->with('message', 'تمت الاضافة بنجاح');
  
-    }
-
-    public function show(string $id)
-    {
-    }
-
-    public function edit(string $id)
-    {
     }
 
     public function update(Request $request, string $id)

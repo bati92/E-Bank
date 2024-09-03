@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->integer('app_id');
             $table->integer('user_id');
-            $table->integer('player_no')->nullable();
             $table->foreign('app_id')->references('id')->on('apps')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('count');
+            $table->integer('price');
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }

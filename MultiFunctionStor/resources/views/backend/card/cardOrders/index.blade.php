@@ -20,7 +20,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="d-flex flex-row-reverse">
                         <div class="page_action">
-                            <a href="javascript:void(0);" data-toggle="modal" class="btn btn-primary" data-target="#createmodal" ><i class="fa fa-add">أضف بطاقة جديد</i></a>
+                            <a href="javascript:void(0);" data-toggle="modal" class="btn btn-primary" data-target="#createmodal" ><i class="fa fa-add">أضف طلب بطاقة جديد</i></a>
                         </div>
                         <div class="p-2 d-flex">
                         </div>
@@ -38,28 +38,26 @@
                                 <table class="table table-hover js-basic-example dataTable table-custom mb-0">
                                     <thead>
                                         <tr>                                            
-                                            <th>اسم  البطاقة</th>
+                                            <th>اسم البطاقة</th>
                                             <th> الصورة </th>
-                                            <th>  السعر</th>
+                                            <th>السعر</th>
                                             <th>العمليات</th>
                                         </tr>
                                     </thead>
                                     
                                     <tbody>
-                                        @foreach ($cards as $key => $card)
+                                        @foreach ($cardOrders as $key => $cardOrder)
                                         <tr>
                                             <td class="project-title">
-                                                <h6>{{$card->name}}</h6>
+                                                <h6>{{$cardOrder->name}}</h6>
                                             </td>
-                                            
-
                                             <td><img src="{{asset('assets/images/card/'.$card->image)}}" data-toggle="tooltip" data-placement="top" title="Team Lead" alt="Avatar" class="width35 rounded"></td>
-                                             <td> {{$card->price}}</td>
+                                             <td> {{$cardOrder->price}}</td>
                                             <td class="project-actions">
                                                 <a href="#defaultModal" data-toggle="modal" data-target="#defaultModal">
                                                 <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary"><i class="icon-eye"></i></a>
-                                                <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$card->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
-                                                <a  href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$card->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
+                                                <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$cardOrder->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
+                                                <a  href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$cardOrder->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -82,7 +80,7 @@
                 <h4 class="title" >إضافة  بطاقة  جديد</h4>
             </div>
             <div class="modal-body"> 
-                <form method="Post" action="{{ route('card.store') }}" enctype="multipart/form-data">
+                <form method="Post" action="{{ route('card-order.store') }}" enctype="multipart/form-data">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
@@ -125,15 +123,15 @@
 </div>
 
 <!--------------delete -------------->
-@foreach ($cards as $key => $card)
-<div class="modal fade" id="deleteModal{{$card->id}}" tabindex="-1" role="dialog">
+@foreach ($cardOrders as $key => $cardOrder)
+<div class="modal fade" id="deleteModal{{$cardOrder->id}}" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="title" >هل أنت بالتاكيد تريد الحذف </h4>
             </div>
             <div class="modal-body"> 
-             <form action="{{ route('card.destroy', $card->id) }}" method="POST">
+             <form action="{{ route('card-order.destroy', $cardOrder->id) }}" method="POST">
                @csrf
                @method('DELETE')
                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -149,36 +147,36 @@
 @endforeach
 
 <!--------------edit -------------->
-@foreach ($cards as $key => $card)
-<div class="modal fade" id="editModal{{$card->id}}" tabindex="-1" role="dialog">
+@foreach ($cardOrders as $key => $cardOrder)
+<div class="modal fade" id="editModal{{$cardOrder->id}}" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="title" >تعديل معلومات البطاقة </h4>
             </div>
             <div class="modal-body"> 
-                <form method="POST" action="{{ route('card.update', $card->id) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('card-order.update', $cardOrder->id) }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$card->name}}" required placeholder="الاسم" name="name" aria-label="name" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$cardOrder->name}}" required placeholder="الاسم" name="name" aria-label="name" aria-describedby="basic-addon2">
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" required placeholder="السعر"  value="{{$card->price}}"   name="price" aria-label="price" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" required placeholder="السعر"  value="{{$cardOrder->price}}"   name="price" aria-label="price" aria-describedby="basic-addon2">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" required placeholder="السعر"  value="{{$card->price}}"   name="price" aria-label="price" aria-describedby="basic-addon2">
-                        <textarea class="form-control"  name="note" placeholder="الوصف"  > value="{{$card->note}}" </textarea>
+                        <input type="text" class="form-control" required placeholder="السعر"  value="{{$cardOrder->price}}"   name="price" aria-label="price" aria-describedby="basic-addon2">
+                        <textarea class="form-control"  name="note" placeholder="الوصف"  > value="{{$cardOrder->note}}" </textarea>
 
                     </div>
                     <div class="input-group mb-3">

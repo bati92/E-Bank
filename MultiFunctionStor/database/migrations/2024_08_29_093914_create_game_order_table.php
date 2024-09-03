@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('game_order', function (Blueprint $table) {
+        Schema::create('game_orders', function (Blueprint $table) {
             $table->id();
             $table->integer('game_id');
             $table->integer('user_id');
@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('user_id_game');//ايدية اليوزر باللعبة
             $table->string('name')->nullable();
             $table->integer('price');
+            $table->integer('count');
             $table->string('note')->nullable();
             $table->timestamps();
         });
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('game_order');
+        Schema::dropIfExists('game_orders');
     }
 };

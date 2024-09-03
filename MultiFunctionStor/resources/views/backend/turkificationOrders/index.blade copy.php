@@ -10,11 +10,11 @@
         <div class="block-header">
             <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
-                    <h2> خدمة  التتريك </h2>
+                    <h2> خدمة التتريك </h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-dashboard"></i></a></li>                            
                         <li class="breadcrumb-item">لوحة التحكم</li>
-                        <li class="breadcrumb-item active">    التتريك</li>
+                        <li class="breadcrumb-item active">  التتريك</li>
                     </ul>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -45,19 +45,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($turkifications as $key => $turkification)
+                                        @foreach ($turkificationOrders as $key => $turkificationOrder)
                                         <tr>
                                             <td class="project-title">
-                                                <h6>{{$turkification->id}}</h6>
+                                                <h6>{{$turkificationOrder->id}}</h6>
                                                 <small>user name</small>
                                             </td>
                                             <td>done</td>
-                                            <td>{{$turkification->ime}}</td>
+                                            <td>{{$turkificationOrder->ime}}</td>
                                             <td class="project-actions">
                                                 <a href="#defaultModal" data-toggle="modal" data-target="#defaultModal">
                                                 <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary"><i class="icon-eye"></i></a>
-                                                <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$turkification->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
-                                                <a  href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$turkification->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
+                                                <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$turkificationOrder->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
+                                                <a  href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$turkificationOrder->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -80,7 +80,7 @@
                 <h4 class="title" id="defaultModalLabelcreate">إضافة طلب التتريك</h4>
             </div>
             <div class="modal-body"> 
-                <form method="Post"  action="{{ route('turkification.store') }}" enctype="multipart/form-data">
+                <form method="Post"  action="{{ route('turkification-order.store') }}" enctype="multipart/form-data">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
@@ -101,15 +101,15 @@
 </div>
 
 <!--------------delete -------------->
-@foreach ($turkifications as $key => $turkification)
-<div class="modal fade" id="deleteModal{{$turkification->id}}" tabindex="-1" role="dialog">
+@foreach ($turkificationOrders as $key => $turkificationOrder)
+<div class="modal fade" id="deleteModal{{$turkificationOrder->id}}" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="title" id="defaultModalLabeldelete">هل أنت بالتاكيد تريد الحذف </h4>
             </div>
             <div class="modal-body"> 
-             <form action="{{ route('turkification.destroy', $turkification->id) }}" method="POST">
+             <form action="{{ route('turkification-order.destroy', $turkificationOrder->id) }}" method="POST">
                @csrf
                @method('DELETE')
                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -125,22 +125,52 @@
 @endforeach
 
 <!--------------edit -------------->
-@foreach ($turkifications as $key => $turkification)
-<div class="modal fade" id="editModal{{$turkification->id}}" tabindex="-1" role="dialog">
+@foreach ($turkificationOrders as $key => $turkificationOrder)
+<!-- <div class="modal fade" id="editModal{{$turkificationOrder->id}}" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="title" id="defaultModalLabeledit"> تعديل معلومات طلبي</h4>
             </div>
             <div class="modal-body"> 
-                <form method="POST"  action="{{ route('turkification.update', ['turkification' => $turkification->id]) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('turkification-order.update', ['turkificationOrder' => $turkificationOrder->id]) }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$turkification->ime}}" required placeholder="ime" name="ime" aria-label="ime" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$turkificationOrder->ime}}" required placeholder="ime" name="ime" aria-label="ime" aria-describedby="basic-addon2">
+                    </div>
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                    <div class="modal-footer"> 
+                        <button type="submit" class="btn btn-primary">حفظ</button>
+                        <a href="#" class="btn btn-secondary" data-dismiss="modal">الغاء الأمر</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+<div class="modal fade" id="editModal{{$app->id}}" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="title" id="defaultModalLabeledit"> تعديل معلومات طلبي</h4>
+            </div>
+            <div class="modal-body"> 
+                <form method="POST" action="{{ route('turkification-order.update', ['turkificationOrder' => $turkificationOrder->id]) }}" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    {{ method_field('PATCH') }}
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <input type="text" class="form-control" value="{{$turkificationOrder->ime}}" required placeholder="ime" name="ime" aria-label="ime" aria-describedby="basic-addon2">
                     </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <div class="modal-footer"> 

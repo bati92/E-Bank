@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Models\GameOrder;
+use Illuminate\Support\Facades\DB;
 
 class GameOrderController extends Controller
 {

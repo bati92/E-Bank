@@ -11,14 +11,11 @@ class AppOrder extends Model
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'app_id',
         'user_id',
         'count',
+        'price',
+        'note'
     ];
 }

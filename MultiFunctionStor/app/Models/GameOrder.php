@@ -13,8 +13,9 @@ class GameOrder extends Model
         'name',
         'game_id',
         'user_id_game',
+        'count',
         'price',
-        'note',
+        'note'
     ];
     
 

@@ -11,6 +11,8 @@ class ProgramOrder extends Model
     protected $fillable = [
         'program_id',
         'user_id',
+        'count',
         'price',
+        'note'
     ];
 }

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_order', function (Blueprint $table) {
+        Schema::create('data_orders', function (Blueprint $table) {
             $table->id();
             $table->integer('data_id');
             $table->integer('user_id');
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('price');
             $table->string('mobile');
             $table->integer('count');
-            $table->string('note');
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_order');
+        Schema::dropIfExists('data_orders');
     }
 };

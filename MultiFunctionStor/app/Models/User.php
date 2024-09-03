@@ -67,9 +67,9 @@ class User extends Authenticatable
         return $this->hasMany(Vip::class);
     }
 
-    public function turkifications(): HasMany
+    public function turkification_orders(): HasMany
     {
-        return $this->hasMany(Turkification::class);
+        return $this->hasMany(TurkificationOrder::class);
     }
 
     public function transfer_money_firms(): BelongsToMany

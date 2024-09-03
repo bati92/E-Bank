@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transfer_order', function (Blueprint $table) {
+        Schema::create('transfer_orders', function (Blueprint $table) {
             $table->id();
             $table->integer('transfer_id');
             $table->integer('user_id');
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('price');
             $table->string('mobile');
             $table->integer('count');
-            $table->string('note');
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transfer_order');
+        Schema::dropIfExists('transfer_orders');
     }
 };
