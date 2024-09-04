@@ -18,7 +18,6 @@ class GameSection extends Model
     protected $fillable = [
         'name',
         'image',
-      
     ];
 
       /**

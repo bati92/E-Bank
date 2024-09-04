@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\TransferOrder;
 use Illuminate\Support\Facades\DB;
@@ -11,31 +10,30 @@ class TransferOrderController extends Controller
 {
     public function index()
     {
-        $appOrders=DB::table('app_orders')->select('*')->orderBy('id', 'desc')->paginate(500);
-        return view('backend.app.appOrders.index', compact('appOrders'));
+        $transferOrders=DB::table('transfer_orders')->select('*')->orderBy('id', 'desc')->paginate(500);
+        return view('backend.transfer.transferOrders.index', compact('transferOrders'));
     }
 
     public function store(Request $request)
     {
         $input = $request->all();
-        AppOrder::create($input);
+        TransferOrder::create($input);
         return back()->with('message', 'تمت الاضافة بنجاح');
     }
 
     public function update(Request $request,  $id)
     {
-        $appOrder = AppOrder::findOrFail($id);
+        $transferOrder = TransferOrder::findOrFail($id);
         $input = $request->all();
-       
-        $appOrder->update($input);
+        $transferOrder->update($input);
         
         return back()->with('message', 'تم التعديل بنجاح');
     }
 
     public function destroy( $id)
     {
-        $appOrder= AppOrder::findOrFail($id);
-        $appOrder->delete();
+        $transferOrder= TransferOrder::findOrFail($id);
+        $transferOrder->delete();
         return back()->with('message', 'تم الحذف  بنجاح');
     }
 }

@@ -11,31 +11,29 @@ class ProgramOrderController extends Controller
 {
     public function index()
     {
-        $appOrders=DB::table('app_orders')->select('*')->orderBy('id', 'desc')->paginate(500);
-        return view('backend.app.appOrders.index', compact('appOrders'));
+        $programOrders=DB::table('app_orders')->select('*')->orderBy('id', 'desc')->paginate(500);
+        return view('backend.program.programOrders.index', compact('programOrders'));
     }
 
     public function store(Request $request)
     {
         $input = $request->all();
-        AppOrder::create($input);
+        ProgramOrder::create($input);
         return back()->with('message', 'تمت الاضافة بنجاح');
     }
 
     public function update(Request $request,  $id)
     {
-        $appOrder = AppOrder::findOrFail($id);
+        $programOrder = ProgramOrder::findOrFail($id);
         $input = $request->all();
-       
-        $appOrder->update($input);
-        
+        $programOrder->update($input);
         return back()->with('message', 'تم التعديل بنجاح');
     }
 
     public function destroy( $id)
     {
-        $appOrder= AppOrder::findOrFail($id);
-        $appOrder->delete();
+        $programOrder= ProgramOrder::findOrFail($id);
+        $programOrder->delete();
         return back()->with('message', 'تم الحذف  بنجاح');
     }
 }

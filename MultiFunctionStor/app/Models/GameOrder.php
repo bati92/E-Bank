@@ -10,9 +10,9 @@ class GameOrder extends Model
     use HasFactory;
     protected $fillable = [
         'user_id',
-        'name',
         'game_id',
         'user_id_game',
+        'name',
         'count',
         'price',
         'note'
