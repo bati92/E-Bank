@@ -31,7 +31,7 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h2>الالعاب</h2>
+                            <h2>البنوك الرقمية</h2>
                         </div>
                         <div class="body project_report">
                             <div class="table-responsive">

@@ -14,13 +14,14 @@ return new class extends Migration
         Schema::create('ebank_orders', function (Blueprint $table) {
             $table->id();
             
-            $table->integer('bank_id');
             $table->integer('user_id');
-            $table->foreign('bank_id')->references('id')->on('ebanks')->onDelete('cascade');
+            $table->integer('ebank_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('ebank_id')->references('id')->on('ebanks')->onDelete('cascade');
             $table->string('name');
-            $table->string('price');
-            $table->string('mobile_no');
+            $table->integer('count');
+            $table->integer('price');
+            $table->string('mobile');
             $table->string('note')->nullable();
             $table->timestamps();
         });

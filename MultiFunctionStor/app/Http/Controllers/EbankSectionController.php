@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\EbankSection;
 use Illuminate\Support\Facades\DB;
 class EbankSectionController extends Controller
@@ -13,10 +12,6 @@ class EbankSectionController extends Controller
     { 
         $ebanks=DB::table('ebank_sections')->select('*')->orderBy('id', 'desc')->paginate(500);
         return view('backend.ebank.ebankSections.index', compact('ebanks'));
-    }
-
-    public function create()
-    {
     }
 
     public function store(Request $request)
@@ -37,14 +32,6 @@ class EbankSectionController extends Controller
         }
         EbankSection::create($input);
         return back()->with('message', 'تمت الاضافة بنجاح');
-    }
-
-    public function show(string $id)
-    {
-    }
-
-    public function edit(string $id)
-    {
     }
 
     public function update(Request $request, string $id)

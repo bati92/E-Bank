@@ -10,11 +10,11 @@ class EbankOrder extends Model
     use HasFactory;
     protected $fillable = [
         'user_id',
+        'ebank_id',
         'name',
-        'bank_id',
         'count',
         'price',
-        'mobile_no',
+        'mobile',
         'note',
     ];
 }
