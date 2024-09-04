@@ -220,14 +220,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" required placeholder="السعر"  value="{{$data->price}}"   name="price" aria-label="price" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" required placeholder="السعر" value="{{$data->price}}" name="price" aria-label="price" aria-describedby="basic-addon2">
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <textarea class="form-control"  name="note" placeholder="الوصف"  > value="{{$data->name}}" </textarea>
+                        <textarea class="form-control"  name="note" placeholder="الوصف"> {{$data->note}} </textarea>
                     </div>
 
                     <div class="input-group mb-3">

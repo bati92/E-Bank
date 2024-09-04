@@ -181,7 +181,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <textarea class="form-control"  name="note" placeholder="الوصف"  > value="{{$card->note}}" </textarea>
+                        <textarea class="form-control"  name="note" placeholder="الوصف"  > {{$card->note}} </textarea>
 
                     </div>
                     <div class="input-group mb-3">

@@ -116,8 +116,6 @@
                         </div>
                         <input type="text" class="form-control" required placeholder="عدد" name="count" aria-label="count" aria-describedby="basic-addon2">
                     </div>
-                   
-
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>

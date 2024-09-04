@@ -26,9 +26,7 @@ class CardOrderController extends Controller
     {
         $cardOrder = CardOrder::findOrFail($id);
         $input = $request->all();
-       
         $cardOrder->update($input);
-        
         return back()->with('message', 'تم التعديل بنجاح');
     }
 

@@ -31,16 +31,18 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h2>الالعاب</h2>
+                            <h2>البطاقات</h2>
                         </div>
                         <div class="body project_report">
                             <div class="table-responsive">
                                 <table class="table table-hover js-basic-example dataTable table-custom mb-0">
                                     <thead>
                                         <tr>                                            
-                                            <th>اسم البطاقة</th>
-                                            <th> الصورة </th>
+                                            <th>اسم التطبيق</th>
+                                            <th>اسم المستخدم</th>
                                             <th>السعر</th>
+                                            <th>العدد</th>
+                                            <th>الوصف</th>
                                             <th>العمليات</th>
                                         </tr>
                                     </thead>
@@ -49,10 +51,12 @@
                                         @foreach ($cardOrders as $key => $cardOrder)
                                         <tr>
                                             <td class="project-title">
-                                                <h6>{{$cardOrder->name}}</h6>
+                                                <h6>{{$cardOrder->card_id}}</h6>
                                             </td>
-                                            <td><img src="{{asset('assets/images/card/'.$card->image)}}" data-toggle="tooltip" data-placement="top" title="Team Lead" alt="Avatar" class="width35 rounded"></td>
-                                             <td> {{$cardOrder->price}}</td>
+                                            <td>{{$cardOrder->user_id}}</td>
+                                            <td>{{$cardOrder->price}}</td>
+                                            <td>{{$cardOrder->count}}</td>
+                                            <td>{{$cardOrder->note}}</td>
                                             <td class="project-actions">
                                                 <a href="#defaultModal" data-toggle="modal" data-target="#defaultModal">
                                                 <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary"><i class="icon-eye"></i></a>
@@ -72,12 +76,15 @@
     </div>
 </div>
 
+
+<th>اسم التطبيق</th>
+                                            <th>اسم المستخدم</th>
 <!-------------create--------->
 <div class="modal fade" id="createmodal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="title" >إضافة  بطاقة  جديد</h4>
+                <h4 class="title" >إضافة طلب بطاقة جديد</h4>
             </div>
             <div class="modal-body"> 
                 <form method="Post" action="{{ route('card-order.store') }}" enctype="multipart/form-data">
@@ -85,31 +92,31 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" required placeholder="الاسم"  name="name" aria-label="name" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" required placeholder="اسم البطاقة"  name="card_id" aria-label="card_id" aria-describedby="basic-addon2">
                     </div>
-
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" required placeholder="السعر"  name="price" aria-label="price" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <input type="text" class="form-control" required placeholder="السعر" name="price" aria-label="price" aria-describedby="basic-addon2">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <input type="text" class="form-control" required placeholder="عدد" name="count" aria-label="count" aria-describedby="basic-addon2">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
                         <textarea class="form-control" name="note" placeholder="الوصف"></textarea>
-
-                    </div>
-                   
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">الصورة</span>
-                        </div>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="image">
-                            <label class="custom-file-label" for="inputGroupFile01">اختر الصورة</label>
-                        </div>
                     </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <div class="modal-footer">   
@@ -158,38 +165,40 @@
                 <form method="POST" action="{{ route('card-order.update', $cardOrder->id) }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
-                        </div>
-                        <input type="text" class="form-control" value="{{$cardOrder->name}}" required placeholder="الاسم" name="name" aria-label="name" aria-describedby="basic-addon2">
-                    </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" required placeholder="السعر"  value="{{$cardOrder->price}}"   name="price" aria-label="price" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$cardOrder->card_id}}" required placeholder="اسم البطاقة"  name="card_id" aria-label="card_id" aria-describedby="basic-addon2">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" required placeholder="السعر"  value="{{$cardOrder->price}}"   name="price" aria-label="price" aria-describedby="basic-addon2">
-                        <textarea class="form-control"  name="note" placeholder="الوصف"  > value="{{$cardOrder->note}}" </textarea>
-
+                        <input type="text" class="form-control" value="{{$cardOrder->user_id}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">الصورة</span>
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="image">
-                            <label class="custom-file-label" for="inputGroupFile01">اختر الصورة </label>
+                        <input type="text" class="form-control" value="{{$cardOrder->price}}" required placeholder="السعر" name="price" aria-label="price" aria-describedby="basic-addon2">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
+                        <input type="text" class="form-control" value="{{$cardOrder->count}}" required placeholder="عدد" name="count" aria-label="count" aria-describedby="basic-addon2">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <textarea class="form-control" name="note" placeholder="الوصف">{{$cardOrder->note}}</textarea>
                     </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                               
+                    <input type="hidden" name="ard_id" value="1" />
+                    <input type="hidden" name="user_id" value="1" />                               
                     <div class="modal-footer"> 
                         <button type="submit" class="btn btn-primary">حفظ</button>
                         <a href="#" class="btn btn-secondary" data-dismiss="modal">الغاء الأمر</a>
