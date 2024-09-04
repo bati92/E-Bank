@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class DataOrder extends Model
 {
     use HasFactory;
-    
 
     protected $fillable = [
         'data_id',

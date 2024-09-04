@@ -11,12 +11,8 @@ class DataController extends Controller
     
     public function index()
     { 
-        $datas=DB::table('data')->select('*')->orderBy('id', 'desc')->paginate(500);
-        return view('backend.data.index', compact('datas'));
-    }
-
-    public function create()
-    {
+        $datas=DB::table('datas')->select('*')->orderBy('id', 'desc')->paginate(500);
+        return view('backend.data.datas.index', compact('datas'));
     }
 
     public function store(Request $request)
@@ -38,14 +34,6 @@ class DataController extends Controller
          
         Data::create($input);
         return back()->with('message', 'تمت الاضافة بنجاح');
-    }
-
-    public function show(string $id)
-    {
-    }
-
-    public function edit(string $id)
-    {
     }
 
     public function update(Request $request, string $id)

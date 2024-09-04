@@ -10,31 +10,30 @@ class DataOrderController extends Controller
 {
     public function index()
     {
-        $appOrders=DB::table('app_orders')->select('*')->orderBy('id', 'desc')->paginate(500);
-        return view('backend.app.appOrders.index', compact('appOrders'));
+        $dataOrders=DB::table('data_orders')->select('*')->orderBy('id', 'desc')->paginate(500);
+        return view('backend.data.dataOrders.index', compact('dataOrders'));
     }
 
     public function store(Request $request)
     {
         $input = $request->all();
-        AppOrder::create($input);
+        DataOrder::create($input);
         return back()->with('message', 'تمت الاضافة بنجاح');
     }
 
     public function update(Request $request,  $id)
     {
-        $appOrder = AppOrder::findOrFail($id);
+        $dataOrders = DataOrder::findOrFail($id);
         $input = $request->all();
-       
-        $appOrder->update($input);
+        $dataOrders->update($input);
         
         return back()->with('message', 'تم التعديل بنجاح');
     }
 
     public function destroy( $id)
     {
-        $appOrder= AppOrder::findOrFail($id);
-        $appOrder->delete();
+        $dataOrders= DataOrder::findOrFail($id);
+        $dataOrders->delete();
         return back()->with('message', 'تم الحذف  بنجاح');
     }
 }
