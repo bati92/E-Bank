@@ -12,7 +12,7 @@ class TurkificationOrderController extends Controller
     public function index()
     {
        $turkificationOrders=DB::table('turkification_orders')->select('*')->orderBy('id', 'desc')->paginate(500);
-       return view('backend.turkificationOrders.index', compact('turkificationOrders'));
+       return view('backend.turkification.turkificationOrders.index', compact('turkificationOrders'));
     }
 
     public function store(Request $request)

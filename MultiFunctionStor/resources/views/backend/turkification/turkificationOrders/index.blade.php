@@ -77,7 +77,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="title" id="defaultModalLabelcreate">إضافة تطبيق جديد</h4>
+                <h4 class="title" id="defaultModalLabelcreate">إضافة طلب جديد</h4>
             </div>
             <div class="modal-body"> 
                 <form method="Post" action="{{ route('turkification-order.store') }}" enctype="multipart/form-data">
