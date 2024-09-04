@@ -19,13 +19,13 @@ class EcardOrderController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        AppOrder::create($input);
+        EcardOrder::create($input);
         return back()->with('message', 'تمت الاضافة بنجاح');
     }
 
     public function update(Request $request,  $id)
     {
-        $appOrder = AppOrder::findOrFail($id);
+        $appOrder = EcardOrder::findOrFail($id);
         $input = $request->all();
        
         $appOrder->update($input);
@@ -35,7 +35,7 @@ class EcardOrderController extends Controller
 
     public function destroy( $id)
     {
-        $appOrder= AppOrder::findOrFail($id);
+        $appOrder= EcardOrder::findOrFail($id);
         $appOrder->delete();
         return back()->with('message', 'تم الحذف  بنجاح');
     }

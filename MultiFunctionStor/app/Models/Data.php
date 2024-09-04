@@ -19,9 +19,6 @@ class Data extends Model
         'type',//فاتورة   1 :   ---   -2:رصيد
     ];
     
-    /**
-     * Get the user that owns the turkification.
-     */
     public function user(): BelongsToMany
     {
         return $this->BelongsToMany(User::class);

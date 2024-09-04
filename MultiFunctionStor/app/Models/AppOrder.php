@@ -14,6 +14,7 @@ class AppOrder extends Model
     protected $fillable = [
         'app_id',
         'user_id',
+        'player_no',
         'count',
         'price',
         'note'

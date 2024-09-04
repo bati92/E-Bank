@@ -15,11 +15,6 @@ class AppController extends Controller
        return view('backend.app.apps.index', compact('apps'));
     }
 
-    public function create()
-    {
-        return view('backend.app.apps.create');
-    }
-
     public function store(Request $request)
     {
         $input = $request->all();
@@ -38,15 +33,6 @@ class AppController extends Controller
       
         App::create($input);
         return back()->with('message', 'تمت الاضافة بنجاح');
-    }
-
-    
-    public function show(string $id)
-    {
-    }
-    
-    public function edit(string $id)
-    {
     }
 
     public function update(Request $request, string $id)
@@ -69,13 +55,8 @@ class AppController extends Controller
         $app->update( $input);
        
         return back()->with('message', 'تم التعديل بنجاح');
-
-        //if faile?
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $app= App::findOrFail($id);

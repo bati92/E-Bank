@@ -19,7 +19,6 @@ class App extends Model
      */
     protected $fillable = [
         'name',
-        'player_no',
         'price',
         'note',
         'image',

@@ -40,6 +40,7 @@
                                         <tr> 
                                             <th>اسم التطبيق</th>
                                             <th>اسم المستخدم</th>
+                                            <th>رقم اللاعب</th>
                                             <th>السعر</th>
                                             <th>العدد</th>
                                             <th>الوصف</th>
@@ -53,6 +54,7 @@
                                                 <h6>{{$appOrder->app_id}}</h6>
                                             </td>
                                             <td>{{$appOrder->user_id}}</td>
+                                            <td>{{$appOrder->player_no}}</td>
                                             <td>{{$appOrder->price}}</td>
                                             <td>{{$appOrder->count}}</td>
                                             <td>{{$appOrder->note}}</td>
@@ -100,7 +102,13 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" required placeholder="السعر"  name="price" aria-label="price" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" required placeholder="رقم اللاعب" name="player_no" aria-label="player_no" aria-describedby="basic-addon2">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <input type="text" class="form-control" required placeholder="السعر" name="price" aria-label="price" aria-describedby="basic-addon2">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -181,6 +189,12 @@
                         <input type="text" class="form-control" value="{{$appOrder->user_id}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
                     </div>
 
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <input type="text" class="form-control" value="{{$appOrder->player_no}}" required placeholder="رقم اللاعب" name="player_no" aria-label="player_no" aria-describedby="basic-addon2">
+                    </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
