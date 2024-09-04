@@ -11,11 +11,7 @@ class TransferController extends Controller
     { 
         $transfers=DB::table('transfers')->select('*')->orderBy('id', 'desc')->paginate(500);
         
-        return view('backend.transfer.index', compact('transfers'));
-    }
-
-    public function create()
-    {
+        return view('backend.transfer.transfers.index', compact('transfers'));
     }
 
     public function store(Request $request)
@@ -36,14 +32,6 @@ class TransferController extends Controller
         }
          Transfer::create($input);
         return back()->with('message', 'تمت الاضافة بنجاح');
-    }
-
-    public function show(string $id)
-    {
-    }
-
-    public function edit(string $id)
-    {
     }
 
     public function update(Request $request, string $id)
