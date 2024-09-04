@@ -8,16 +8,10 @@ use App\Models\Program;
 use Illuminate\Support\Facades\DB;
 class ProgramController extends Controller
 {
-    
     public function index()
     { 
         $programs=DB::table('programs')->select('*')->orderBy('id', 'desc')->paginate(500);
-        
-        return view('backend.program.index', compact('programs'));
-    }
-
-    public function create()
-    {
+        return view('backend.program.programs.index', compact('programs'));
     }
 
     public function store(Request $request)
@@ -37,14 +31,6 @@ class ProgramController extends Controller
         }
         Program::create($input);
         return back()->with('message', 'تمت الاضافة بنجاح');
-    }
-
-    public function show(string $id)
-    {
-    }
-
-    public function edit(string $id)
-    {
     }
 
     public function update(Request $request, string $id)

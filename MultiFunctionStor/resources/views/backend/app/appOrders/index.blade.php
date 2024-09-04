@@ -205,7 +205,6 @@
                         </div>
                         <input type="number" class="form-control" value="{{$appOrder->count}}" required placeholder="عدد" name="count" aria-label="count" aria-describedby="basic-addon2">
                     </div>
-
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">الوصف</span>

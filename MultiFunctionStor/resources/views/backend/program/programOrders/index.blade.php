@@ -37,29 +37,30 @@
                             <div class="table-responsive">
                                 <table class="table table-hover js-basic-example dataTable table-custom mb-0">
                                     <thead>
-                                        <tr>                                            
-                                            <th>اسم  البرنامج</th>
-                                            <th> الصورة </th>
-                                         
+                                        <tr> 
+                                            <th>اسم البرنامج</th>
+                                            <th>اسم المستخدم</th>
+                                            <th>السعر</th>
+                                            <th>العدد</th>
+                                            <th>الوصف</th>
                                             <th>العمليات</th>
                                         </tr>
                                     </thead>
-                                    
                                     <tbody>
-                                        @foreach ($programs as $key => $program)
+                                        @foreach ($programOrders as $key => $programOrder)
                                         <tr>
                                             <td class="project-title">
-                                                <h6>{{$program->name}}</h6>
+                                                <h6>{{$programOrder->program_id}}</h6>
                                             </td>
-                                        
-
-                                            <td><img src="{{asset('assets/images/program/'.$program->image)}}" data-toggle="tooltip" data-placement="top" title="Team Lead" alt="Avatar" class="width35 rounded"></td>
-                                           
+                                            <td>{{$programOrder->user_id}}</td>
+                                            <td>{{$programOrder->price}}</td>
+                                            <td>{{$programOrder->count}}</td>
+                                            <td>{{$programOrder->note}}</td>
                                             <td class="project-actions">
                                                 <a href="#defaultModal" data-toggle="modal" data-target="#defaultModal">
                                                 <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary"><i class="icon-eye"></i></a>
-                                                <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$program->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
-                                                <a  href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$program->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
+                                                <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$programOrder->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
+                                                <a href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$programOrder->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -82,38 +83,42 @@
                 <h4 class="title" >إضافة  برنامج  جديد</h4>
             </div>
             <div class="modal-body"> 
-                <form method="Post" action="{{ route('program.store') }}" enctype="multipart/form-data">
+                <form method="Post" action="{{ route('program-order.store') }}" enctype="multipart/form-data">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" required placeholder="الاسم"  name="name" aria-label="name" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" required placeholder="اسم التطبيق" name="program_id" aria-label="program_id" aria-describedby="basic-addon2">
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" required placeholder="السعر"  name="price" aria-label="price" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <textarea class="form-control"  name="note" placeholder="الوصف"></textarea>
+                        <input type="text" class="form-control" required placeholder="السعر" name="price" aria-label="price" aria-describedby="basic-addon2">
                     </div>
-
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">الصورة</span>
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="image">
-                            <label class="custom-file-label" for="inputGroupFile01">اختر الصورة</label>
+                        <input type="number" class="form-control" required placeholder="عدد" name="count" aria-label="count" aria-describedby="basic-addon2">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">الوصف</span>
                         </div>
+                        <textarea class="form-control" name="note" placeholder="الوصف" ></textarea>
                     </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                    <input type="hidden" name="program_id" value="1" />
+                    <input type="hidden" name="user_id" value="1" />
                     <div class="modal-footer">   
                         <button type="submit" class="btn btn-primary">حفظ</button>
                         <a href="#" class="btn btn-secondary" data-dismiss="modal">الغاء الأمر</a>
@@ -125,15 +130,15 @@
 </div>
 
 <!--------------delete -------------->
-@foreach ($programs as $key => $program)
-<div class="modal fade" id="deleteModal{{$program->id}}" tabindex="-1" role="dialog">
+@foreach ($programOrders as $key => $programOrder)
+<div class="modal fade" id="deleteModal{{$programOrder->id}}" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="title" >هل أنت بالتاكيد تريد الحذف </h4>
             </div>
             <div class="modal-body"> 
-             <form action="{{ route('program.destroy', $program->id) }}" method="POST">
+             <form action="{{ route('program-order.destroy', $programOrder->id) }}" method="POST">
                @csrf
                @method('DELETE')
                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -149,46 +154,48 @@
 @endforeach
 
 <!--------------edit -------------->
-@foreach ($programs as $key => $program)
-<div class="modal fade" id="editModal{{$program->id}}" tabindex="-1" role="dialog">
+@foreach ($programOrders as $key => $programOrder)
+<div class="modal fade" id="editModal{{$programOrder->id}}" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="title" >تعديل معلومات البرنامج </h4>
             </div>
             <div class="modal-body"> 
-                <form method="POST" action="{{ route('program.update', $program->id) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('program-order.update', $programOrder->id) }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$program->name}}" required placeholder="الاسم" name="name" aria-label="name" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$programOrder->program_id}}" required placeholder="اسم التطبيق" name="program_id" aria-label="program_id" aria-describedby="basic-addon2">
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" required placeholder="السعر" value="{{$program->price}}"   name="price" aria-label="price" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$programOrder->user_id}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <textarea class="form-control"  name="note" placeholder="الوصف"   >"{{$program->price}}</textarea>
+                        <input type="text" class="form-control" value="{{$programOrder->price}}" required placeholder="السعر" name="price" aria-label="price" aria-describedby="basic-addon2">
                     </div>
-
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">الصورة</span>
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="image">
-                            <label class="custom-file-label" for="inputGroupFile01">اختر الصورة </label>
+                        <input type="number" class="form-control" value="{{$programOrder->count}}" required placeholder="عدد" name="count" aria-label="count" aria-describedby="basic-addon2">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">الوصف</span>
                         </div>
+                        <textarea class="form-control" name="note" placeholder="الوصف" >{{$programOrder->note}} </textarea>
                     </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                
