@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\EcardSection;
 use App\Models\Ecard;
 use Illuminate\Support\Facades\DB;
 
@@ -13,12 +12,8 @@ class EcardController extends Controller
     public function index()
     { 
         $ecards=DB::table('ecards')->select('*')->orderBy('id', 'desc')->paginate(500);
-        $ecards_sections=DB::table('ecard_sections')->select('*')->orderBy('id', 'desc')->paginate(500);
-        return view('backend.ecard.ecards.index', compact('ecards','ecards_sections'));
-    }
-
-    public function create()
-    {
+        $ecardsSections=DB::table('ecard_sections')->select('*')->orderBy('id', 'desc')->paginate(500);
+        return view('backend.ecard.ecards.index', compact('ecards','ecardsSections'));
     }
 
     public function store(Request $request)
@@ -27,7 +22,7 @@ class EcardController extends Controller
        
          if($request->file('image')!="")
          {
-             if ($file = $request->file('image')) {
+            if ($file = $request->file('image')) {
             $name = 'ecard'.time().$file->getClientOriginalName();
             $file->move('assets/images/ecard/', $name);
             $input['image'] = $name;
@@ -39,14 +34,6 @@ class EcardController extends Controller
         }
         Ecard::create($input);
         return back()->with('message', 'تمت الاضافة بنجاح');
-    }
-
-    public function show(string $id)
-    {
-    }
-
-    public function edit(string $id)
-    {
     }
 
     public function update(Request $request, string $id)

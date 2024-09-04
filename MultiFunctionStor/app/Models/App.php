@@ -20,9 +20,9 @@ class App extends Model
     protected $fillable = [
         'name',
         'price',
-        'note',
         'image',
         'note',
+        'section_id',
     ];
     
     public function users(): BelongsToMany

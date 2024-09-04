@@ -15,7 +15,6 @@ class Ebank extends Model
         'image',
         'note',
         'price',
-
     ];
     
     /**

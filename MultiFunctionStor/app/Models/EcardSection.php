@@ -9,7 +9,6 @@ class EcardSection extends Model
 {
     use HasFactory;
     protected $fillable = [
-       
         'name',
         'image',
     ];

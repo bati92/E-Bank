@@ -60,7 +60,7 @@
                                             </td>
                                             <td class="project-title">
                                                 <h6>  
-                                                    @foreach ($ecards_sections as $key => $section)
+                                                    @foreach ($ecardSections as $key => $section)
                                                       @if( $ecard->ecard_id==$section->id)
                                                          {{$section->name}}
                                                          @break
@@ -104,7 +104,7 @@
                         </div>
                         <select class="custom-select" required name="ecard_id" >
                             <option value="" selected>اختر القسم</option>
-                            @foreach ($ecards_sections as $key => $section)
+                            @foreach ($ecardsSections as $key => $section)
                             <option value="{{$section->id}}" >{{$section->name}}</option>
     
                             @endforeach
@@ -195,7 +195,7 @@
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
                         <select class="custom-select" required name="ecard_id" >
-                            @foreach ($ecards_sections as $key => $section)
+                            @foreach ($ecardsSections as $key => $section)
                                 @if( $ecard->ecard_id==$section->id)
                             <option value="{{$section->id}}" selected>{{$section->name}}</option>
                                 @else

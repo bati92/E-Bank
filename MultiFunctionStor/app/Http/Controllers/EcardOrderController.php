@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
-use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\EcardOrder;
 use Illuminate\Support\Facades\DB;
@@ -12,8 +10,8 @@ class EcardOrderController extends Controller
 {
     public function index()
     {
-        $appOrders=DB::table('app_orders')->select('*')->orderBy('id', 'desc')->paginate(500);
-        return view('backend.app.appOrders.index', compact('appOrders'));
+        $ecardOrders=DB::table('ecard_orders')->select('*')->orderBy('id', 'desc')->paginate(500);
+        return view('backend.ecard.ecardOrders.index', compact('ecardOrders'));
     }
 
     public function store(Request $request)
@@ -23,20 +21,19 @@ class EcardOrderController extends Controller
         return back()->with('message', 'تمت الاضافة بنجاح');
     }
 
-    public function update(Request $request,  $id)
+    public function update(Request $request, $id)
     {
-        $appOrder = EcardOrder::findOrFail($id);
+        $ecardOrder = EcardOrder::findOrFail($id);
         $input = $request->all();
-       
-        $appOrder->update($input);
+        $ecardOrder->update($input);
         
         return back()->with('message', 'تم التعديل بنجاح');
     }
 
-    public function destroy( $id)
+    public function destroy($id)
     {
-        $appOrder= EcardOrder::findOrFail($id);
-        $appOrder->delete();
+        $ecardOrder= EcardOrder::findOrFail($id);
+        $ecardOrder->delete();
         return back()->with('message', 'تم الحذف  بنجاح');
     }
 }
