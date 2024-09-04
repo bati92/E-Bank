@@ -14,7 +14,7 @@
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-dashboard"></i></a></li>                            
                         <li class="breadcrumb-item">لوحة التحكم</li>
-                        <li class="breadcrumb-item active">    نقل الرصيد الى master kontor</li>
+                        <li class="breadcrumb-item active">  نقل الرصيد الى master kontor</li>
                     </ul>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -31,35 +31,38 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h2>الالعاب</h2>
+                            <h2>طلبات نقل</h2>
                         </div>
                         <div class="body project_report">
                             <div class="table-responsive">
                                 <table class="table table-hover js-basic-example dataTable table-custom mb-0">
                                     <thead>
-                                        <tr>                                            
-                                            <th>اسم  البرنامج</th>
-                                            <th> الصورة </th>
-                                         
+                                        <tr> 
+                                            <th>اسم التطبيق</th>
+                                            <th>اسم المستخدم</th>
+                                            <th>السعر</th>
+                                            <th>العدد</th>
+                                            <th>الوصف</th>
+                                            <th>رقم الهاتف</th>
                                             <th>العمليات</th>
                                         </tr>
                                     </thead>
-                                    
                                     <tbody>
-                                        @foreach ($transfers as $key => $transfer)
+                                        @foreach ($transferOrders as $key => $transferOrder)
                                         <tr>
                                             <td class="project-title">
-                                                <h6>{{$transfer->name}}</h6>
+                                                <h6>{{$transferOrder->transfer_id}}</h6>
                                             </td>
-                                        
-
-                                            <td><img src="{{asset('assets/images/transfer/'.$transfer->image)}}" data-toggle="tooltip" data-placement="top" title="Team Lead" alt="Avatar" class="width35 rounded"></td>
-                                           
+                                            <td>{{$transferOrder->user_id}}</td>
+                                            <td>{{$transferOrder->price}}</td>
+                                            <td>{{$transferOrder->count}}</td>
+                                            <td>{{$transferOrder->mobile}}</td>
+                                            <td>{{$transferOrder->note}}</td>
                                             <td class="project-actions">
                                                 <a href="#defaultModal" data-toggle="modal" data-target="#defaultModal">
                                                 <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary"><i class="icon-eye"></i></a>
-                                                <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$transfer->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
-                                                <a  href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$transfer->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
+                                                <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$transferOrder->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
+                                                <a href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$transferOrder->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -79,43 +82,51 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="title" >إضافة  برنامج  جديد</h4>
+                <h4 class="title" >إضافة طلب نقل جديد</h4>
             </div>
             <div class="modal-body"> 
-                <form method="Post" action="{{ route('transfer.store') }}" enctype="multipart/form-data">
-             
-
+                <form method="Post" action="{{ route('transfer-order.store') }}" enctype="multipart/form-data">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" required placeholder="الاسم"  name="name" aria-label="name" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" required placeholder="اسم تحويل" name="transfer_id" aria-label="transfer_id" aria-describedby="basic-addon2">
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" required placeholder="السعر"  name="price" aria-label="price" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <textarea class="form-control"  name="note" placeholder="الوصف"></textarea>
+                        <input type="text" class="form-control" required placeholder="رقم الهاتف " name="mobile" aria-label="mobile" aria-describedby="basic-addon2">
                     </div>
-
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">الصورة</span>
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="image">
-                            <label class="custom-file-label" for="inputGroupFile01">اختر الصورة</label>
+                        <input type="text" class="form-control" required placeholder="السعر" name="price" aria-label="price" aria-describedby="basic-addon2">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
+                        <input type="number" class="form-control" required placeholder="عدد" name="count" aria-label="count" aria-describedby="basic-addon2">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">الوصف</span>
+                        </div>
+                        <textarea class="form-control" name="note" placeholder="الوصف" ></textarea>
                     </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                    <input type="hidden" name="transfer_id" value="1" />
+                    <input type="hidden" name="user_id" value="1" />
                     <div class="modal-footer">   
                         <button type="submit" class="btn btn-primary">حفظ</button>
                         <a href="#" class="btn btn-secondary" data-dismiss="modal">الغاء الأمر</a>
@@ -127,15 +138,15 @@
 </div>
 
 <!--------------delete -------------->
-@foreach ($transfers as $key => $transfer)
-<div class="modal fade" id="deleteModal{{$transfer->id}}" tabindex="-1" role="dialog">
+@foreach ($transferOrders as $key => $transferOrder)
+<div class="modal fade" id="deleteModal{{$transferOrder->id}}" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="title" >هل أنت بالتاكيد تريد الحذف </h4>
             </div>
             <div class="modal-body"> 
-             <form action="{{ route('transfer.destroy', $transfer->id) }}" method="POST">
+             <form action="{{ route('transfer-order.destroy', $transferOrder->id) }}" method="POST">
                @csrf
                @method('DELETE')
                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -151,48 +162,55 @@
 @endforeach
 
 <!--------------edit -------------->
-@foreach ($transfers as $key => $transfer)
-<div class="modal fade" id="editModal{{$transfer->id}}" tabindex="-1" role="dialog">
+@foreach ($transferOrders as $key => $transferOrder)
+<div class="modal fade" id="editModal{{$transferOrder->id}}" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="title" >تعديل معلومات البرنامج </h4>
+                <h4 class="title" >تعديل معلومات طلب التحويل </h4>
             </div>
             <div class="modal-body"> 
-                <form method="POST" action="{{ route('transfer.update', $transfer->id) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('transfer-order.update', $transfer->id) }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
 
-
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$transfer->name}}" required placeholder="الاسم" name="name" aria-label="name" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$transferOrder->transfer_id}}" required placeholder="اسم تحويل" name="transfer_id" aria-label="transfer_id" aria-describedby="basic-addon2">
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" required placeholder="السعر" value="{{$transfer->price}}"   name="price" aria-label="price" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$transferOrder->user_id}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <textarea class="form-control"  name="note" placeholder="السعر">{{$transfer->note}}</textarea>
+                        <input type="text" class="form-control" value="{{$transferOrder->mobile}}" required placeholder="رقم الهاتف " name="mobile" aria-label="mobile" aria-describedby="basic-addon2">
                     </div>
-                    
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">الصورة</span>
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="image">
-                            <label class="custom-file-label" for="inputGroupFile01">اختر الصورة </label>
+                        <input type="text" class="form-control" value="{{$transferOrder->price}}" required placeholder="السعر" name="price" aria-label="price" aria-describedby="basic-addon2">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
+                        <input type="number" class="form-control" value="{{$transferOrder->count}}" required placeholder="عدد" name="count" aria-label="count" aria-describedby="basic-addon2">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">الوصف</span>
+                        </div>
+                        <textarea class="form-control" name="note" placeholder="الوصف" >{{$transferOrder->note}} </textarea>
                     </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                
